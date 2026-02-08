@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
 
-// Connect to MongoDB
-mongoose.connect("mongodb+srv://bfpAdmin:01030611bfp@bfp-data.wdksjxw.mongodb.net/bfp_system_data")
+//Connect to MongoDB Atlas
+mongoose.connect(process.env.MONGODB_URI);
 
 // Confirm connection
 mongoose.connection.on('connected', () => {
